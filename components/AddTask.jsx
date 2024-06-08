@@ -49,6 +49,7 @@ const AddTask = ({changeTasks}) => {
         //   <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
         // ),
       })
+      setSubmitting(false);
       return;
     }
     try {
@@ -162,7 +163,7 @@ const AddTask = ({changeTasks}) => {
           </div>
           <DialogFooter>
             <DialogClose asChild>
-              <Button type="button" variant="secondary" onClick={handleSubmit}>
+              <Button type="button" onClick={handleSubmit}>
                 {submitting ? "Creating..." : "Submit"}
               </Button>
             </DialogClose>
