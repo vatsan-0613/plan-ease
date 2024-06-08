@@ -91,7 +91,7 @@ const Task = ({taskTitle, due, description, taskId, updateTasks, deleteTasks}) =
         <p className='text-sm'>{format(due, "dd/MM/yyyy")}</p>
         </div>
        </CardTitle>
-        <CardDescription className="max-w-[70%]">{description}</CardDescription>
+        <CardDescription className="max-w-[70%] break-words text-justify">{description}</CardDescription>
       </CardHeader>
       <CardFooter className="flex justify-between">
         <Button variant="outline" onClick={handleDelete}>Delete</Button>
