@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 const Tasks = ({tasks, updateTasks, deleteTasks}) => {
 
   return (
-    <div className="justify-items-center grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 mt-8 gap-7">
+    <div className="justify-items-center grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 mt-8 gap-7 mb-5">
         {
             tasks.map(task => {
                 return(
