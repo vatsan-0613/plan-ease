@@ -32,7 +32,7 @@ import { useSession } from "next-auth/react";
 const AddTask = ({changeTasks}) => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-  const [date, setDate] = useState();
+  const [date, setDate] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const { data: session } = useSession();
   const { toast } = useToast();
@@ -41,6 +41,16 @@ const AddTask = ({changeTasks}) => {
 
   const handleSubmit = async (e) => {
     setSubmitting(true);
+    if(title == "" || date==""){
+      toast({
+        title: "!oops, Enter Title and set a proper due date.",
+        description: "Fill In Required Fields"
+        // action: (
+        //   <ToastAction altText="Goto schedule to undo">Undo</ToastAction>
+        // ),
+      })
+      return;
+    }
     try {
       const response = await fetch("/api/task/new", {
         method: "POST",
@@ -107,6 +117,7 @@ const AddTask = ({changeTasks}) => {
                 className="col-span-3"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
+                required
               />
             </div>
             <div className="grid grid-cols-4 items-center   gap-4">
